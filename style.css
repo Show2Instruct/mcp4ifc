@@ -118,19 +118,10 @@ p {
     text-decoration: underline; /* 添加下划线 */
 }
 
-.citation-text {
-    font-family: 'Courier New', Courier, monospace;
-    margin: 50px;
-    padding:20px;
-    margin-top: 30px;
-    white-space: pre-wrap;
-    color: #333;
-    text-align: left;
-    max-width: 800px;
-    display: inline-block;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
+.citation-card { position: relative; display: inline-block; width: 100%; max-width: 800px; margin: 24px 0 16px 0; }
+.copy-button { position: absolute; top: 10px; right: 10px; border: none; background: transparent; padding: 4px; cursor: pointer; color: #555; font-size: 18px; }
+.copy-button:hover { color: #1c1c1c; }
+.citation-text { font-family: 'Courier New', Courier, monospace; margin: 0; padding: 18px; white-space: pre-wrap; color: #333; text-align: left; border: 1px solid #ddd; border-radius: 5px; background-color: #fafafa; overflow-x: auto; }
 
 .button {
     display: inline-flex;

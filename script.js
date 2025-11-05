@@ -135,5 +135,33 @@ document.addEventListener('DOMContentLoaded', function() {
         showImage(currentIndex);
         restartAutoplay();
     }
+
+    const copyButtons = document.querySelectorAll('[data-copy-target]');
+    copyButtons.forEach((button) => {
+        button.addEventListener('click', async () => {
+            const target = document.getElementById(button.dataset.copyTarget);
+            if (!target) {
+                return;
+            }
+            const text = target.textContent.trim();
+            try {
+                if (navigator.clipboard?.writeText) {
+                    await navigator.clipboard.writeText(text);
+                    return;
+                }
+            } catch (clipboardError) {
+                // Fallback handled below when Clipboard API fails
+            }
+            const helper = document.createElement('textarea');
+            helper.value = text;
+            helper.setAttribute('readonly', '');
+            helper.style.position = 'absolute';
+            helper.style.left = '-9999px';
+            document.body.appendChild(helper);
+            helper.select();
+            document.execCommand('copy');
+            document.body.removeChild(helper);
+        });
+    });
 });
 
